@@ -1,10 +1,12 @@
 # zend-expressive-hydrator-delegator
 
+[![License](https://poser.pugx.org/tobias/zend-expressive-hydrator-delegator/license)](https://packagist.org/packages/tobias/zend-expressive-hydrator-delegator)
 [![Latest Stable Version](https://poser.pugx.org/tobias/zend-expressive-hydrator-delegator/v/stable)](https://packagist.org/packages/tobias/zend-expressive-hydrator-delegator)
-[![Total Downloads](https://poser.pugx.org/tobias/zend-expressive-hydrator-delegator/downloads)](https://packagist.org/packages/tobias/zend-expressive-hydrator-delegator)
+[![PHP 7 ready](http://php7ready.timesplinter.ch/tobias-trozowski/zend-expressive-hydrator-delegator/badge.svg)](https://travis-ci.org/tobias-trozowski/zend-expressive-hydrator-delegator)
 [![Build Status](https://travis-ci.org/tobias-trozowski/zend-expressive-hydrator-delegator.svg?branch=master)](https://travis-ci.org/tobias-trozowski/zend-expressive-hydrator-delegator)
 [![Coverage Status](https://coveralls.io/repos/tobias-trozowski/zend-expressive-hydrator-delegator/badge.svg?branch=master)](https://coveralls.io/r/tobias-trozowski/zend-expressive-hydrator-delegator?branch=master)
-[![License](https://poser.pugx.org/tobias/zend-expressive-hydrator-delegator/license)](https://packagist.org/packages/tobias/zend-expressive-hydrator-delegator)
+[![Total Downloads](https://poser.pugx.org/tobias/zend-expressive-hydrator-delegator/downloads)](https://packagist.org/packages/tobias/zend-expressive-hydrator-delegator)
+
 
 Delegator for Zend [HydratorPluginManager](https://github.com/zendframework/zend-hydrator)
 
