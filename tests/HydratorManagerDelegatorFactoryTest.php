@@ -28,6 +28,7 @@ use Interop\Container\ContainerInterface;
 use Tobias\Expressive\Hydrator\HydratorManagerDelegatorFactory;
 use Zend\Hydrator\HydratorPluginManager;
 use Zend\ServiceManager\DelegatorFactoryInterface;
+use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
  * Class HydratorManagerDelegatorFactoryTest
@@ -36,14 +37,28 @@ use Zend\ServiceManager\DelegatorFactoryInterface;
 class HydratorManagerDelegatorFactoryTest extends \PHPUnit_Framework_TestCase
 {
 
-    public function testInvoke()
+    /**
+     * @return array
+     */
+    public function dataProvider()
+    {
+        return [
+            [ContainerInterface::class, '__invoke'],
+            [ServiceLocatorInterface::class, 'createDelegatorWithName'],
+        ];
+    }
+
+    /**
+     * @dataProvider dataProvider
+     */
+    public function testInvoke($interface, $method)
     {
         $config = [
-            'input_filters' => [],
+            'hydrators' => [],
         ];
 
         /** @var ContainerInterface|\PHPUnit_Framework_MockObject_MockObject $container */
-        $container = $this->getMockBuilder(ContainerInterface::class)->getMockForAbstractClass();
+        $container = $this->getMockBuilder($interface)->getMockForAbstractClass();
         $container->expects($this->once())->method('has')->with('config')->will($this->returnValue(true));
         $container->expects($this->once())->method('get')->with('config')->will($this->returnValue($config));
 
@@ -53,7 +68,11 @@ class HydratorManagerDelegatorFactoryTest extends \PHPUnit_Framework_TestCase
         $subject = new HydratorManagerDelegatorFactory();
         $this->assertInstanceOf(DelegatorFactoryInterface::class, $subject);
 
-        $instance = $subject($container, 'HydratorManager', $callback);
+        if ($container instanceof ServiceLocatorInterface) {
+            $instance = $subject->$method($container, 'HydratorManager', 'HydratorManager', $callback);
+        } else {
+            $instance = $subject->$method($container, 'HydratorManager', $callback);
+        }
         $this->assertInstanceOf(HydratorPluginManager::class, $instance);
     }
 }
