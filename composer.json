@@ -1,0 +1,55 @@
+{
+    "name": "tobias/zend-expressive-hydrator-delegator",
+    "description": "HydratorPluginManager delegator to create hydrators from config.",
+    "type": "library",
+    "homepage": "https://github.com/tobias-trozowski/zend-expressive-hydrator-delegator",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tobias Trozowski",
+            "email": "tobias.trozowski@trozowski-it.de",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/tobias-trozowski/zend-expressive-hydrator-delegator/issues",
+        "source": "https://github.com/tobias-trozowski/zend-expressive-hydrator-delegator/tree/master"
+    },
+    "keywords": [
+        "zend",
+        "expressive",
+        "hydrator",
+        "delegator"
+    ],
+    "prefer-stable": true,
+    "require": {
+        "php": "^5.6 || ^7.0",
+        "zendframework/zend-servicemanager": "^2.7.6 || ^3.0.0",
+        "zendframework/zend-hydrator": "^2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.6 || ^5.2.10",
+        "zendframework/zend-coding-standard": "~1.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tobias\\Expressive\\Hydrator\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "TobiasTest\\Expressive\\Hydrator\\": "tests/"
+        }
+    },
+    "scripts": {
+        "check": [
+            "@cs",
+            "@test"
+        ],
+        "cs-check": "phpcs",
+        "cs-fix": "phpcbf",
+        "test": "phpunit --colors=always",
+        "test-coverage": "phpunit --colors=always --coverage-clover clover.xml",
+        "upload-coverage": "coveralls -v"
+    }
+}
